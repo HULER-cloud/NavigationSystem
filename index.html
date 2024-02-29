@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Navigation System</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <style>
+        html, body, #map_container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .标题, .选项 {
+            text-align: center;
+        }
+        
+        /* 清除api控件 */
+        .BMAP_cpyCtrl, .anchorBL{
+            display: none;
+        }
+    </style>
+    <script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=您的密钥"></script>
+    <!-- 下面这行是传统api的，webGL版的话用不到 -->
+    <!-- <script src="https://mapv.baidu.com/build/mapv.min.js"></script> -->
+    <script src="https://mapv.baidu.com/gl/examples/static/common.js"></script>
+    <script src="https://unpkg.com/mapvgl@1.0.0-beta.168/dist/mapvgl.min.js"></script>
+    <script type="text/javascript" src="./1-class.js"></script>
+    <script type="text/javascript" src="./2-globalVar.js"></script>
+
+</head>
+<body>
+    <div class="标题"><h1>Navigation System</h1></div>
+    <hr>
+    <div class="控制栏">
+		<div class="选项">
+            聚焦坐标：
+            <input type="text" class="form" id="in1">
+            <input type="text" class="form" id="in2">
+            <button id="locationFocus">指定坐标</button>
+            <button class="removeMarks">清除聚焦</button>
+            聚焦节点：
+            <input type="text" class="form" id="in3">
+            <button id="nodeFocus">指定节点</button>
+            <button class="removeMarks">清除聚焦</button>
+            <br>
+            最短路径：
+            <input type="text" class="form" id="in4">
+            <input type="text" class="form" id="in5">
+            <button id="SPath">指定起终点（编号）</button>
+            <button class="cleanPath">清除路径</button>
+            <br>
+            模拟车流：
+            <button id="trafficSimulation">设定车流</button>
+            <button id="trafficClean">清除车流</button>
+            <button id="timeAhead">时间步进！</button>
+            <button id="timeAheadContinously">时间持续前进！</button>
+            <button id="timeStop">时间停止！</button>
+            综合最短路径：
+            <input type="text" class="form" id="in6">
+            <input type="text" class="form" id="in7">
+            <button id="generalSPath">指定起终点（车流已设置）</button>
+            <button class="cleanPath">清除路径</button>
+		</div>
+	</div>
+	<hr>
+    <!-- 地图容器的id只能是这个，因为common.js里面就是这个，要用在线的话得名称对应 -->
+    <div id="map_container"></div>
+
+</body>
+<script type="text/javascript" src="./3-mapGen.js"></script>
+<script type="text/javascript" src="./4-layersGen.js"></script>
+<script type="text/javascript" src="./5-graphGen.js"></script>
+<script type="text/javascript" src="./6-function.js"></script>
+
+</html>
